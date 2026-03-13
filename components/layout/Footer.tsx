@@ -47,31 +47,26 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#0D1F1C] border-t border-[#2A2A2A]">
-      {/* Subtle Topographic Background */}
-      <div className="absolute inset-0 opacity-20">
-        <TopographicBg animated={false} />
-      </div>
-
+    <footer className="relative bg-black border-t border-[#222222]">
       <div className="container-wide relative z-10">
         {/* Main Footer Content */}
         <div className="section-padding grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-6">
             <Link href="/" className="inline-block">
-              <h2 className="font-display text-2xl md:text-3xl text-[#F5F0E8] hover:text-[#C9A84C] transition-colors">
+              <h2 className="font-display text-2xl md:text-3xl text-white opacity-90 hover:opacity-100 transition-opacity">
                 TIMES APPLAUD
               </h2>
             </Link>
 
-            <p className="font-inter text-[#8A8A7C] leading-relaxed">
+            <p className="text-body leading-relaxed">
               Your trusted source for the latest news, entertainment, sports, technology, and lifestyle updates. 
               Delivering quality journalism since 2022.
             </p>
 
             {/* Social Links */}
             <div>
-              <p className="font-mono-caps text-xs text-[#8A8A7C] mb-4">FOLLOW US</p>
+              <p className="text-nav text-xs text-[#666666] mb-4">FOLLOW US</p>
               <div className="flex gap-3">
                 {socialLinks.map((social) => {
                   const Icon = social.icon;
@@ -81,7 +76,7 @@ export default function Footer() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full border border-[#2A2A2A] flex items-center justify-center text-[#F5F0E8] hover:border-[#C9A84C] hover:text-[#C9A84C] hover:bg-[#C9A84C]/10 transition-all duration-300"
+                      className="w-10 h-10 border border-[#222222] flex items-center justify-center text-white opacity-70 hover:opacity-100 transition-opacity"
                       aria-label={social.platform}
                     >
                       <Icon className="w-5 h-5" />
@@ -93,16 +88,16 @@ export default function Footer() {
 
             {/* Newsletter Signup */}
             <div className="pt-4">
-              <p className="font-mono-caps text-xs text-[#8A8A7C] mb-3">SUBSCRIBE TO OUR NEWSLETTER</p>
+              <p className="text-nav text-xs text-[#666666] mb-3">SUBSCRIBE TO OUR NEWSLETTER</p>
               <form className="flex gap-2">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 bg-[#0A0A0A] border border-[#2A2A2A] px-4 py-2 text-sm text-[#F5F0E8] placeholder:text-[#8A8A7C] focus:outline-none focus:border-[#C9A84C]"
+                  className="flex-1 bg-transparent border border-[#222222] px-4 py-2 text-sm text-white placeholder:text-[#666666] focus:outline-none focus:border-white transition-colors font-mono"
                 />
                 <button
                   type="submit"
-                  className="font-mono-caps text-xs px-4 py-2 bg-[#C9A84C] text-[#0A0A0A] hover:bg-[#D4B85E] transition-colors"
+                  className="text-button px-6 py-2 bg-white text-black hover:bg-[#cccccc] transition-colors"
                 >
                   SUBSCRIBE
                 </button>
@@ -112,13 +107,13 @@ export default function Footer() {
 
           {/* Categories Column */}
           <div>
-            <h3 className="font-mono-caps text-xs text-[#8A8A7C] mb-4">CATEGORIES</h3>
+            <h3 className="text-nav text-xs text-[#666666] mb-4">CATEGORIES</h3>
             <ul className="space-y-2">
               {footerLinks.categories.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-inter text-sm text-[#F5F0E8] hover:text-[#C9A84C] transition-colors"
+                    className="text-nav text-sm text-white opacity-70 hover:opacity-100 transition-opacity block"
                   >
                     {link.label}
                   </Link>
@@ -129,13 +124,13 @@ export default function Footer() {
 
           {/* Company Column */}
           <div>
-            <h3 className="font-mono-caps text-xs text-[#8A8A7C] mb-4">COMPANY</h3>
+            <h3 className="text-nav text-xs text-[#666666] mb-4">COMPANY</h3>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-inter text-sm text-[#F5F0E8] hover:text-[#C9A84C] transition-colors"
+                    className="text-nav text-sm text-white opacity-70 hover:opacity-100 transition-opacity block"
                   >
                     {link.label}
                   </Link>
@@ -146,13 +141,13 @@ export default function Footer() {
 
           {/* Resources Column */}
           <div>
-            <h3 className="font-mono-caps text-xs text-[#8A8A7C] mb-4">RESOURCES</h3>
+            <h3 className="text-nav text-xs text-[#666666] mb-4">RESOURCES</h3>
             <ul className="space-y-2">
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-inter text-sm text-[#F5F0E8] hover:text-[#C9A84C] transition-colors"
+                    className="text-nav text-sm text-white opacity-70 hover:opacity-100 transition-opacity block"
                   >
                     {link.label}
                   </Link>
@@ -163,20 +158,20 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-[#2A2A2A] py-6">
+        <div className="border-t border-[#222222] py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
-            <div className="font-jetbrains text-xs text-[#8A8A7C]">
+            <div className="text-meta text-[#666666]">
               © {new Date().getFullYear()} Times Applaud Pvt. Ltd. All rights reserved.
             </div>
 
             {/* Legal Links */}
-            <div className="flex gap-6 font-jetbrains text-xs text-[#8A8A7C]">
+            <div className="flex gap-6 text-meta text-[#666666]">
               {footerLinks.legal.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="hover:text-[#C9A84C] transition-colors"
+                  className="opacity-70 hover:opacity-100 transition-opacity"
                 >
                   {link.label}
                 </Link>
@@ -186,8 +181,8 @@ export default function Footer() {
         </div>
 
         {/* Company Info */}
-        <div className="pb-8 pt-4 border-t border-[#2A2A2A]">
-          <div className="font-jetbrains text-xs text-[#8A8A7C] space-y-1">
+        <div className="pb-8 pt-4 border-t border-[#222222]">
+          <div className="text-meta text-[#666666] space-y-1">
             <p>Registered Office: Samarth Complex, B Wing- 201, 2nd Floor, Bapista Compound,</p>
             <p>Jawahar Nagar, Goregaon West, Mumbai, India, Maharashtra</p>
             <p className="pt-2">Co-founded by Taushif Patel and Sunil Pandey | Incorporated under the Companies Act, 2013</p>
