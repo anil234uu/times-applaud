@@ -117,9 +117,42 @@ export const rssFeedUrls = {
   },
 
   // ==========================================================================
-  // LIFESTYLE & HEALTH CATEGORY
+  // 1E — BUSINESS CATEGORY (🔴 Critical for Markets)
+  // ==========================================================================
+  business: {
+    // Hero + Markets (Critical)
+    economicTimes: 'https://economictimes.indiatimes.com/rssfeedstopstories.cms',
+    moneycontrol: 'https://www.moneycontrol.com/rss/latestnews.xml',
+    cnbcTV18: 'https://www.cnbctv18.com/commonfeeds/v1/cne/rss/topstories.xml',
+    
+    // Business Spotlight (High)
+    liveMint: 'https://www.livemint.com/rss/news',
+    businessStandard: 'https://www.business-standard.com/rss/home_page_top_stories.rss',
+    
+    // Startup & Tech Business (Medium)
+    inc42: 'https://inc42.com/feed/',
+    yourStory: 'https://yourstory.com/feed',
+  },
+
+  // ==========================================================================
+  // 1F — LIFESTYLE / FASHION CATEGORY
   // ==========================================================================
   lifestyle: {
+    // Fashion (Normal Priority)
+    vogueIndia: 'https://www.vogue.in/rss',
+    elleIndia: 'https://elle.in/feed/',
+    gqIndia: 'https://www.gqindia.com/rss',
+    
+    // Lifestyle & Design
+    architecturalDigest: 'https://www.architecturaldigest.in/rss',
+    
+    // Food
+    ndtvFood: 'https://feeds.feedburner.com/ndtvcooks-latest',
+    
+    // Travel Cross-post
+    condeNastTraveller: 'https://www.cntraveller.in/rss',
+    
+    // Health & Fitness
     health: [
       'https://www.ndtv.com/health/rss',
       'https://timesofindia.indiatimes.com/life-style/health-fitness/rssfeeds/1708379.cms',
@@ -130,20 +163,35 @@ export const rssFeedUrls = {
   },
 
   // ==========================================================================
-  // FASHION CATEGORY
+  // 1G — HEALTH CATEGORY
   // ==========================================================================
-  fashion: {
-    vogueIndia: 'https://www.vogue.in/fashion/rss',
-    elleIndia: 'https://www.elle.com/fashion/rss/',
+  health: {
+    // Health Spotlight (Normal Priority)
+    healthline: 'https://www.healthline.com/rss',
+    webMD: 'https://rssfeeds.webmd.com/rss/rss.aspx?RSSFeed=RSS_Public',
+    medicalNewsToday: 'https://www.medicalnewstoday.com/rss',
+    
+    // Indian Sources (Medium)
+    ndtvHealth: 'https://feeds.feedburner.com/ndtvhealth-latest',
+    timesOfIndiaHealth: 'https://timesofindia.indiatimes.com/rss/healthfeed.cms',
   },
 
   // ==========================================================================
-  // TRAVEL CATEGORY
+  // 1H — TRAVEL CATEGORY
   // ==========================================================================
   travel: {
-    lonelyPlanet: 'https://www.lonelyplanet.com/rss',
+    // Travel Hero (Normal Priority)
+    nationalGeographic: 'https://www.nationalgeographic.com/travel/rss',
+    lonelyPlanet: 'https://www.lonelyplanet.com/news/feed',
+    
+    // Domestic & Adventure
+    travelLeisureIndia: 'https://travelandleisureindia.in/feed/',
+    ndtvTravel: 'https://feeds.feedburner.com/ndtvtravel',
+    tripoto: 'https://www.tripoto.com/feed',
+    
+    // International
+    condeNastTraveler: 'https://www.cntraveler.com/feed/rss',
     travelLeisure: 'https://www.travelandleisure.com/rss',
-    condéNast: 'https://www.cntraveler.com/feed/rss',
   },
 
   // Legacy single-feed format for backward compatibility
@@ -197,25 +245,36 @@ export const categoryToFeed: Record<string, string[]> = {
   ],
   
   // Health (dedicated category)
-  health: rssFeedUrls.lifestyle.health,
+  health: [
+    ...rssFeedUrls.health ? [
+      rssFeedUrls.health.healthline,
+      rssFeedUrls.health.webMD,
+      rssFeedUrls.health.medicalNewsToday,
+    ] : [],
+    ...rssFeedUrls.lifestyle.health,
+  ],
   
   // Fashion
   fashion: [
-    rssFeedUrls.fashion.vogueIndia,
-    rssFeedUrls.fashion.elleIndia,
+    rssFeedUrls.lifestyle.vogueIndia,
+    rssFeedUrls.lifestyle.elleIndia,
   ],
   
   // Travel
   travel: [
+    rssFeedUrls.travel.nationalGeographic,
     rssFeedUrls.travel.lonelyPlanet,
-    rssFeedUrls.travel.condéNast,
+    rssFeedUrls.travel.condeNastTraveler,
     rssFeedUrls.travel.travelLeisure,
   ],
   
-  // Business (uses news feeds)
+  // Business
   business: [
-    rssFeedUrls.news.economicTimes,
-    rssFeedUrls.news.ndtvTopStories,
+    rssFeedUrls.business.economicTimes,
+    rssFeedUrls.business.moneycontrol,
+    rssFeedUrls.business.cnbcTV18,
+    rssFeedUrls.business.liveMint,
+    rssFeedUrls.business.businessStandard,
   ],
   
   // World News
@@ -254,4 +313,27 @@ export const feedMetadata: Record<string, { name: string; priority: 'critical' |
   [rssFeedUrls.technology.techCrunch]: { name: 'TechCrunch', priority: 'high', refreshInterval: 600 },
   [rssFeedUrls.technology.theVerge]: { name: 'The Verge', priority: 'high', refreshInterval: 600 },
   [rssFeedUrls.technology.gadgets360]: { name: 'Gadgets 360', priority: 'high', refreshInterval: 600 },
+  
+  // Business feeds
+  [rssFeedUrls.business.economicTimes]: { name: 'Economic Times', priority: 'critical', refreshInterval: 300 },
+  [rssFeedUrls.business.moneycontrol]: { name: 'Moneycontrol', priority: 'critical', refreshInterval: 300 },
+  [rssFeedUrls.business.cnbcTV18]: { name: 'CNBC TV18', priority: 'critical', refreshInterval: 300 },
+  [rssFeedUrls.business.liveMint]: { name: 'LiveMint', priority: 'high', refreshInterval: 600 },
+  [rssFeedUrls.business.businessStandard]: { name: 'Business Standard', priority: 'high', refreshInterval: 600 },
+  
+  // Lifestyle & Fashion feeds
+  [rssFeedUrls.lifestyle.vogueIndia]: { name: 'Vogue India', priority: 'normal', refreshInterval: 1800 }, // 30 min
+  [rssFeedUrls.lifestyle.elleIndia]: { name: 'Elle India', priority: 'normal', refreshInterval: 1800 },
+  [rssFeedUrls.lifestyle.ndtvFood]: { name: 'NDTV Food', priority: 'normal', refreshInterval: 1800 },
+  
+  // Health feeds
+  [rssFeedUrls.health.healthline]: { name: 'Healthline', priority: 'normal', refreshInterval: 1800 },
+  [rssFeedUrls.health.webMD]: { name: 'WebMD', priority: 'normal', refreshInterval: 1800 },
+  [rssFeedUrls.health.medicalNewsToday]: { name: 'Medical News Today', priority: 'normal', refreshInterval: 1800 },
+  [rssFeedUrls.health.ndtvHealth]: { name: 'NDTV Health', priority: 'medium', refreshInterval: 900 }, // 15 min
+  
+  // Travel feeds
+  [rssFeedUrls.travel.nationalGeographic]: { name: 'National Geographic Travel', priority: 'normal', refreshInterval: 3600 }, // 60 min
+  [rssFeedUrls.travel.lonelyPlanet]: { name: 'Lonely Planet', priority: 'normal', refreshInterval: 3600 },
+  [rssFeedUrls.travel.travelLeisureIndia]: { name: 'Travel + Leisure India', priority: 'normal', refreshInterval: 3600 },
 };
