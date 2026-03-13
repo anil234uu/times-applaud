@@ -7,7 +7,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Menu, X, Search, Globe } from "lucide-react";
 import { navigationItems, breakingNewsItems } from "@/lib/data";
 import { cn } from "@/lib/utils";
-import Logo from "@/components/ui/Logo";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,9 +31,9 @@ export default function Header() {
 
     const ctx = gsap.context(() => {
       gsap.to(headerRef.current, {
-        backgroundColor: isScrolled ? "rgba(0, 0, 0, 0.98)" : "rgba(0, 0, 0, 0.95)",
+        backgroundColor: isScrolled ? "rgba(10, 10, 10, 0.98)" : "rgba(10, 10, 10, 0.95)",
         backdropFilter: isScrolled ? "blur(12px)" : "blur(8px)",
-        borderBottomColor: "#222222",
+        borderBottomColor: isScrolled ? "#2A2A2A" : "#2A2A2A",
         duration: 0.3,
         ease: "power2.out",
       });
@@ -74,25 +73,18 @@ export default function Header() {
 
   return (
     <>
-      {/* Breaking News Ticker - Mashvp Style */}
-      <div className="fixed top-0 left-0 right-0 z-[999] bg-black text-white overflow-hidden border-b border-[#222222]">
+      {/* Breaking News Ticker */}
+      <div className="fixed top-0 left-0 right-0 z-[999] bg-[#D32F2F] text-white overflow-hidden">
         <div className="flex items-center">
-          <div className="relative px-4 py-2 whitespace-nowrap z-10 flex items-center gap-2">
-            {/* Pulsing Red Dot */}
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
-            </span>
-            <span className="font-mono text-[10px] font-bold tracking-wider text-red-500 uppercase">
-              Breaking
-            </span>
+          <div className="bg-[#B71C1C] px-4 py-2 font-mono-caps text-xs whitespace-nowrap z-10">
+            BREAKING
           </div>
           <div className="relative flex-1 overflow-hidden">
             <div className="animate-marquee flex gap-16 py-2">
               {[...breakingNewsItems, ...breakingNewsItems].map((news, index) => (
                 <span
                   key={index}
-                  className="text-sm font-medium tracking-tight opacity-80 hover:opacity-100 transition-opacity duration-300"
+                  className="font-inter text-sm md:text-base whitespace-nowrap"
                 >
                   {news}
                 </span>
@@ -107,13 +99,17 @@ export default function Header() {
         ref={headerRef}
         className={cn(
           "fixed top-10 left-0 right-0 z-[998] transition-all duration-300 border-b",
-          isScrolled ? "border-[#222222]" : "border-[#222222]"
+          isScrolled ? "border-[#2A2A2A]" : "border-transparent"
         )}
       >
         <div className="container-wide">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <Logo />
+            <Link href="/" className="group">
+              <h1 className="font-display text-xl md:text-2xl lg:text-3xl tracking-tighter text-[#F5F0E8] group-hover:text-[#C9A84C] transition-colors">
+                TIMES APPLAUD
+              </h1>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
@@ -121,10 +117,10 @@ export default function Header() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="text-nav text-white opacity-70 hover:opacity-100 transition-opacity relative group"
+                  className="font-mono-caps text-xs text-[#F5F0E8] hover:text-[#C9A84C] transition-colors relative group"
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-300" />
+                  <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#C9A84C] group-hover:w-full transition-all duration-300" />
                 </Link>
               ))}
             </nav>
@@ -134,7 +130,7 @@ export default function Header() {
               {/* Search */}
               <button
                 onClick={() => setSearchExpanded(!searchExpanded)}
-                className="p-2 text-white opacity-70 hover:opacity-100 transition-colors"
+                className="p-2 text-[#F5F0E8] hover:text-[#C9A84C] transition-colors"
                 aria-label="Search"
               >
                 <Search className="w-5 h-5" />
@@ -142,7 +138,7 @@ export default function Header() {
 
               {/* Language Selector */}
               <button
-                className="hidden md:flex p-2 text-white opacity-70 hover:opacity-100 transition-colors"
+                className="hidden md:flex p-2 text-[#F5F0E8] hover:text-[#C9A84C] transition-colors"
                 aria-label="Language"
               >
                 <Globe className="w-5 h-5" />
@@ -151,7 +147,7 @@ export default function Header() {
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 text-white opacity-70 hover:opacity-100 transition-colors"
+                className="lg:hidden p-2 text-[#F5F0E8] hover:text-[#C9A84C] transition-colors"
                 aria-label="Menu"
               >
                 {isMobileMenuOpen ? (
@@ -169,7 +165,7 @@ export default function Header() {
               ref={searchInputRef}
               type="text"
               placeholder="Search articles, topics..."
-              className="w-0 h-10 bg-transparent border-b border-white text-white placeholder:text-[#666666] focus:outline-none font-mono text-sm"
+              className="w-0 h-10 bg-transparent border-b border-[#C9A84C] text-[#F5F0E8] placeholder:text-[#8A8A7C] focus:outline-none font-jetbrains text-sm"
               style={{ opacity: 0 }}
             />
           </div>
@@ -185,19 +181,19 @@ export default function Header() {
       >
         {/* Backdrop */}
         <div
-          className="absolute inset-0 bg-black/95 backdrop-blur-md"
+          className="absolute inset-0 bg-[#0A0A0A]/95 backdrop-blur-md"
           onClick={() => setIsMobileMenuOpen(false)}
         />
 
         {/* Menu Content */}
-        <div className="absolute right-0 top-0 bottom-0 w-full max-w-md bg-black border-l border-[#222222] p-8 pt-24">
+        <div className="absolute right-0 top-0 bottom-0 w-full max-w-md bg-[#0A0A0A] border-l border-[#2A2A2A] p-8 pt-24">
           <nav className="flex flex-col gap-6">
             {navigationItems.map((item, index) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="font-display text-2xl text-white opacity-70 hover:opacity-100 transition-opacity"
+                className="font-display text-2xl text-[#F5F0E8] hover:text-[#C9A84C] transition-colors"
                 style={{
                   opacity: isMobileMenuOpen ? 0 : 0,
                   transform: isMobileMenuOpen ? "translateX(20px)" : "translateX(0)",
@@ -209,23 +205,23 @@ export default function Header() {
           </nav>
 
           {/* Additional Links */}
-          <div className="mt-12 pt-8 border-t border-[#222222]">
+          <div className="mt-12 pt-8 border-t border-[#2A2A2A]">
             <nav className="flex flex-col gap-4">
               <Link
                 href="/about"
-                className="text-nav text-[#999999] opacity-70 hover:opacity-100 transition-opacity"
+                className="font-mono-caps text-sm text-[#8A8A7C] hover:text-[#C9A84C] transition-colors"
               >
                 About Us
               </Link>
               <Link
                 href="/contact"
-                className="text-nav text-[#999999] opacity-70 hover:opacity-100 transition-opacity"
+                className="font-mono-caps text-sm text-[#8A8A7C] hover:text-[#C9A84C] transition-colors"
               >
                 Contact
               </Link>
               <Link
                 href="/subscribe"
-                className="text-nav text-[#999999] opacity-70 hover:opacity-100 transition-opacity"
+                className="font-mono-caps text-sm text-[#8A8A7C] hover:text-[#C9A84C] transition-colors"
               >
                 Subscribe
               </Link>
@@ -234,13 +230,13 @@ export default function Header() {
 
           {/* Social Links */}
           <div className="mt-auto pt-8">
-            <p className="text-nav text-xs text-[#666666] mb-4">FOLLOW US</p>
+            <p className="font-mono-caps text-xs text-[#8A8A7C] mb-4">FOLLOW US</p>
             <div className="flex gap-4">
               <a
                 href="https://facebook.com/timesapplaud"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 border border-[#222222] flex items-center justify-center text-white opacity-70 hover:opacity-100 transition-opacity"
+                className="w-10 h-10 rounded-full border border-[#2A2A2A] flex items-center justify-center text-[#F5F0E8] hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors"
               >
                 FB
               </a>
@@ -248,7 +244,7 @@ export default function Header() {
                 href="https://youtube.com/@TimesApplaud"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 border border-[#222222] flex items-center justify-center text-white opacity-70 hover:opacity-100 transition-opacity"
+                className="w-10 h-10 rounded-full border border-[#2A2A2A] flex items-center justify-center text-[#F5F0E8] hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors"
               >
                 YT
               </a>
@@ -256,7 +252,7 @@ export default function Header() {
                 href="https://instagram.com/timesapplaud"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 border border-[#222222] flex items-center justify-center text-white opacity-70 hover:opacity-100 transition-opacity"
+                className="w-10 h-10 rounded-full border border-[#2A2A2A] flex items-center justify-center text-[#F5F0E8] hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors"
               >
                 IG
               </a>
