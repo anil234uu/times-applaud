@@ -1,73 +1,257 @@
-// RSS Feed URLs for different categories from Google News and other sources
+// ============================================================================
+// TIMES APPLAUD - MASTER RSS FEED REGISTRY
+// ============================================================================
+// Automated news aggregation from 50+ premium sources
+// Categories: News, Entertainment, Sports, Technology, Lifestyle, Health, Fashion, Travel
+// Refresh intervals: 2-30 minutes based on priority
+// ============================================================================
 
 export const rssFeedUrls = {
-  // Google News RSS Feeds (India)
-  google: {
-    topStories: 'https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en',
-    india: 'https://news.google.com/rss/search?q=india&hl=en-IN&gl=IN&ceid=IN:en',
-    world: 'https://news.google.com/rss/search?q=world+news&hl=en-IN&gl=IN&ceid=IN:en',
-    business: 'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZ4ZDNRU0FtVnVHZ0pWVXlnQVAB?hl=en-IN&gl=IN&ceid=IN:en',
-    technology: 'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp0Y1RjU0FtVnVHZ0pWVXlnQVAB?hl=en-IN&gl=IN&ceid=IN:en',
-    entertainment: 'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRE5zYXk0U0FtVnVHZ0pWVXlnQVAB?hl=en-IN&gl=IN&ceid=IN:en',
-    sports: 'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFQzTWFvU0FtVnVHZ0pWVXlnQVAB?hl=en-IN&gl=IN&ceid=IN:en',
-    science: 'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRE56YkdZU0FtVnVHZ0pWVXlnQVAB?hl=en-IN&gl=IN&ceid=IN:en',
-    health: 'https://news.google.com/rss/search?q=health+news&hl=en-IN&gl=IN&ceid=IN:en',
+  // ==========================================================================
+  // 1A — NEWS CATEGORY (🔴 Critical Priority)
+  // ==========================================================================
+  news: {
+    // Hero + Latest News (Critical)
+    ndtvTopStories: 'https://feeds.feedburner.com/ndtvnews-top-stories',
+    timesOfIndia: 'https://timesofindia.indiatimes.com/rssfeedstopstories.cms',
+    hindustanTimes: 'https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml',
+    indiaToday: 'https://www.indiatoday.in/rss/home',
+    
+    // Breaking + World (Critical)
+    reutersIndia: 'https://www.reuters.com/rssFeed/INTopNews',
+    bbcIndia: 'http://feeds.bbci.co.uk/news/world/asia/india/rss.xml',
+    googleNewsIndia: 'https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en',
+    
+    // News Spotlight (High)
+    theHindu: 'https://www.thehindu.com/news/national/feeder/default.rss',
+    indianExpress: 'https://indianexpress.com/section/india/feed/',
+    zeeNews: 'https://zeenews.india.com/rss/india-national-news.xml',
+    republicWorld: 'https://www.republicworld.com/rss/india-news.xml',
+    
+    // World News (Medium-High)
+    ndtvWorld: 'https://feeds.feedburner.com/ndtvnews-world-news',
+    alJazeera: 'https://www.aljazeera.com/xml/rss/all.xml',
+    cnn: 'http://rss.cnn.com/rss/edition.rss',
+    
+    // Business + Deep Dives
+    economicTimes: 'https://economictimes.indiatimes.com/rssfeedstopstories.cms',
+    scrollIn: 'https://scroll.in/rss/feed',
+    
+    // Local News
+    midDayMumbai: 'https://www.mid-day.com/mumbai-news/rss',
+    ndtvCities: 'https://feeds.feedburner.com/ndtvnews-cities-news',
   },
 
-  // Times of India RSS
-  timesOfIndia: {
-    topStories: 'https://timesofindia.indiatimes.com/rssfeedstopstories.cms',
-    india: 'https://timesofindia.indiatimes.com/rssfeeds/1221656.cms',
-    business: 'https://timesofindia.indiatimes.com/rssfeeds/1898055.cms',
-    sports: 'https://timesofindia.indiatimes.com/rssfeeds/4719148.cms',
-    entertainment: 'https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms',
-    technology: 'https://timesofindia.indiatimes.com/rssfeeds/66949542.cms',
-    world: 'https://timesofindia.indiatimes.com/rssfeeds/1483612.cms',
+  // ==========================================================================
+  // 1B — ENTERTAINMENT CATEGORY
+  // ==========================================================================
+  entertainment: {
+    // Bollywood (High Priority)
+    bollywoodHungama: 'https://www.bollywoodhungama.com/rss/news.xml',
+    pinkvilla: 'https://www.pinkvilla.com/rss.xml',
+    ndtvMovies: 'https://feeds.feedburner.com/ndtvmovies-latest',
+    koimoi: 'https://www.koimoi.com/feed/',
+    peepingMoon: 'https://www.peepingmoon.com/rss',
+    
+    // General Entertainment (Medium)
+    filmfare: 'https://www.filmfare.com/rss.xml',
+    
+    // Hollywood & OTT (Medium)
+    screenRant: 'https://screenrant.com/feed/',
+    theVergeEntertainment: 'https://www.theverge.com/rss/entertainment/index.xml',
+    ottPlay: 'https://www.ottplay.com/rss',
+    variety: 'https://variety.com/feed/',
+    hollywoodReporter: 'https://www.hollywoodreporter.com/feed/',
+    
+    // Music (Normal)
+    rollingStoneIndia: 'https://rollingstoneindia.com/feed/',
   },
 
-  // Hindustan Times RSS
-  hindustanTimes: {
-    topStories: 'https://www.hindustantimes.com/feeds/rss/top-news/rssfeed.xml',
-    india: 'https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml',
-    world: 'https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml',
-    sports: 'https://www.hindustantimes.com/feeds/rss/sports/rssfeed.xml',
-    entertainment: 'https://www.hindustantimes.com/feeds/rss/entertainment/rssfeed.xml',
-    technology: 'https://www.hindustantimes.com/feeds/rss/technology/rssfeed.xml',
+  // ==========================================================================
+  // 1C — SPORTS CATEGORY (🔴 Critical for Cricket)
+  // ==========================================================================
+  sports: {
+    // Cricket (Critical - Live Scores)
+    espnCricinfo: 'https://www.espncricinfo.com/ci/engine/rss/guide.html',
+    cricBuzz: 'https://www.cricbuzz.com/rss/',
+    
+    // General Sports (Critical)
+    ndtvSports: 'https://feeds.feedburner.com/ndtvsports-latest',
+    sportstar: 'https://sportstar.thehindu.com/rss',
+    espnIndia: 'https://www.espn.in/espn/rss/news',
+    
+    // Football (High)
+    goalComIndia: 'https://www.goal.com/en-in/feeds/news',
+    skySports: 'https://www.skysports.com/rss/12040',
+    
+    // Other Sports (Medium-Normal)
+    olympics: 'https://olympics.com/en/rss',
+    autosport: 'https://www.autosport.com/rss/feed/all',
+    tennis365: 'https://www.tennis365.com/feed/',
   },
 
-  // Indian Express RSS
-  indianExpress: {
-    topStories: 'https://indianexpress.com/feed/',
-    india: 'https://indianexpress.com/section/india/feed/',
-    world: 'https://indianexpress.com/section/world/feed/',
-    sports: 'https://indianexpress.com/section/sports/feed/',
-    entertainment: 'https://indianexpress.com/section/entertainment/feed/',
-    technology: 'https://indianexpress.com/section/technology/feed/',
+  // ==========================================================================
+  // 1D — TECHNOLOGY CATEGORY
+  // ==========================================================================
+  technology: {
+    // Tech Hero (High Priority)
+    techCrunch: 'https://techcrunch.com/feed/',
+    theVerge: 'https://www.theverge.com/rss/index.xml',
+    indianExpressTech: 'https://indianexpress.com/section/technology/feed/',
+    gadgets360: 'https://gadgets360.com/rss/news',
+    
+    // Gadgets & Apps (Medium)
+    androidAuthority: 'https://www.androidauthority.com/feed/',
+    nineToFiveGoogle: 'https://9to5google.com/feed/',
+    nineToFiveMac: 'https://9to5mac.com/feed/',
+    xdaDevelopers: 'https://www.xda-developers.com/feed/',
+    
+    // Deep Dives (Medium-Normal)
+    wired: 'https://www.wired.com/feed/rss',
+    arsTechnica: 'https://feeds.arstechnica.com/arstechnica/index',
+    mitTechnologyReview: 'https://www.technologyreview.com/feed/',
+    
+    // Specialized (Normal)
+    spaceCom: 'https://www.space.com/feeds/all',
+    hackerNews: 'https://feeds.feedburner.com/TheHackersNews',
   },
 
-  // ESPN Cricinfo (Cricket)
+  // ==========================================================================
+  // LIFESTYLE & HEALTH CATEGORY
+  // ==========================================================================
+  lifestyle: {
+    health: [
+      'https://www.ndtv.com/health/rss',
+      'https://timesofindia.indiatimes.com/life-style/health-fitness/rssfeeds/1708379.cms',
+    ],
+    fitness: [
+      'https://www.healthshots.com/feed/',
+    ],
+  },
+
+  // ==========================================================================
+  // FASHION CATEGORY
+  // ==========================================================================
+  fashion: {
+    vogueIndia: 'https://www.vogue.in/fashion/rss',
+    elleIndia: 'https://www.elle.com/fashion/rss/',
+  },
+
+  // ==========================================================================
+  // TRAVEL CATEGORY
+  // ==========================================================================
+  travel: {
+    lonelyPlanet: 'https://www.lonelyplanet.com/rss',
+    travelLeisure: 'https://www.travelandleisure.com/rss',
+    condéNast: 'https://www.cntraveler.com/feed/rss',
+  },
+
+  // Legacy single-feed format for backward compatibility
   cricket: 'https://www.espncricinfo.com/ci/engine/rss/guide.html',
-
-  // NDTV RSS
-  ndtv: {
-    topStories: 'https://profit.ndtv.com/news/rss',
-    india: 'https://www.ndtv.com/rss/india',
-    world: 'https://www.ndtv.com/rss/world',
-    sports: 'https://sports.ndtv.com/rss',
-    entertainment: 'https://movies.ndtv.com/rss',
-  },
 };
 
-// Category to Feed mapping
+// Category to Feed mapping (prioritized order)
 export const categoryToFeed: Record<string, string[]> = {
-  news: [rssFeedUrls.google.topStories, rssFeedUrls.timesOfIndia.india],
-  entertainment: [rssFeedUrls.google.entertainment, rssFeedUrls.timesOfIndia.entertainment],
-  sports: [rssFeedUrls.google.sports, rssFeedUrls.timesOfIndia.sports, rssFeedUrls.cricket],
-  technology: [rssFeedUrls.google.technology, rssFeedUrls.timesOfIndia.technology],
-  travel: [rssFeedUrls.google.topStories], // Limited travel-specific RSS
-  lifestyle: [rssFeedUrls.google.health, rssFeedUrls.google.entertainment],
-  health: [rssFeedUrls.google.health],
-  fashion: [rssFeedUrls.google.entertainment],
-  business: [rssFeedUrls.google.business, rssFeedUrls.timesOfIndia.business],
-  world: [rssFeedUrls.google.world, rssFeedUrls.timesOfIndia.world],
+  // News: Critical sources first
+  news: [
+    rssFeedUrls.news.ndtvTopStories,
+    rssFeedUrls.news.timesOfIndia,
+    rssFeedUrls.news.reutersIndia,
+    rssFeedUrls.news.googleNewsIndia,
+    rssFeedUrls.news.bbcIndia,
+    rssFeedUrls.news.hindustanTimes,
+    rssFeedUrls.news.indiaToday,
+  ],
+  
+  // Entertainment: Bollywood priority
+  entertainment: [
+    rssFeedUrls.entertainment.bollywoodHungama,
+    rssFeedUrls.entertainment.pinkvilla,
+    rssFeedUrls.entertainment.ndtvMovies,
+    rssFeedUrls.entertainment.screenRant,
+    rssFeedUrls.entertainment.variety,
+  ],
+  
+  // Sports: Cricket is king
+  sports: [
+    rssFeedUrls.sports.espnCricinfo,
+    rssFeedUrls.sports.cricBuzz,
+    rssFeedUrls.sports.ndtvSports,
+    rssFeedUrls.sports.goalComIndia,
+    rssFeedUrls.sports.espnIndia,
+  ],
+  
+  // Technology: Major publications first
+  technology: [
+    rssFeedUrls.technology.techCrunch,
+    rssFeedUrls.technology.theVerge,
+    rssFeedUrls.technology.gadgets360,
+    rssFeedUrls.technology.indianExpressTech,
+    rssFeedUrls.technology.androidAuthority,
+  ],
+  
+  // Lifestyle & Health
+  lifestyle: [
+    ...rssFeedUrls.lifestyle.health,
+    ...rssFeedUrls.lifestyle.fitness,
+  ],
+  
+  // Health (dedicated category)
+  health: rssFeedUrls.lifestyle.health,
+  
+  // Fashion
+  fashion: [
+    rssFeedUrls.fashion.vogueIndia,
+    rssFeedUrls.fashion.elleIndia,
+  ],
+  
+  // Travel
+  travel: [
+    rssFeedUrls.travel.lonelyPlanet,
+    rssFeedUrls.travel.condéNast,
+    rssFeedUrls.travel.travelLeisure,
+  ],
+  
+  // Business (uses news feeds)
+  business: [
+    rssFeedUrls.news.economicTimes,
+    rssFeedUrls.news.ndtvTopStories,
+  ],
+  
+  // World News
+  world: [
+    rssFeedUrls.news.ndtvWorld,
+    rssFeedUrls.news.alJazeera,
+    rssFeedUrls.news.cnn,
+    rssFeedUrls.news.reutersIndia,
+  ],
+};
+
+// Feed metadata for admin dashboard
+export const feedMetadata: Record<string, { name: string; priority: 'critical' | 'high' | 'medium' | 'normal'; refreshInterval: number }> = {
+  // News feeds
+  [rssFeedUrls.news.ndtvTopStories]: { name: 'NDTV Top Stories', priority: 'critical', refreshInterval: 300 }, // 5 min
+  [rssFeedUrls.news.timesOfIndia]: { name: 'Times of India', priority: 'critical', refreshInterval: 300 },
+  [rssFeedUrls.news.reutersIndia]: { name: 'Reuters India', priority: 'critical', refreshInterval: 300 },
+  [rssFeedUrls.news.googleNewsIndia]: { name: 'Google News India', priority: 'critical', refreshInterval: 180 }, // 3 min
+  [rssFeedUrls.news.bbcIndia]: { name: 'BBC India', priority: 'high', refreshInterval: 600 }, // 10 min
+  [rssFeedUrls.news.hindustanTimes]: { name: 'Hindustan Times', priority: 'high', refreshInterval: 600 },
+  [rssFeedUrls.news.indiaToday]: { name: 'India Today', priority: 'high', refreshInterval: 300 },
+  [rssFeedUrls.news.theHindu]: { name: 'The Hindu', priority: 'high', refreshInterval: 600 },
+  [rssFeedUrls.news.indianExpress]: { name: 'Indian Express', priority: 'high', refreshInterval: 600 },
+  
+  // Entertainment feeds
+  [rssFeedUrls.entertainment.bollywoodHungama]: { name: 'Bollywood Hungama', priority: 'high', refreshInterval: 600 },
+  [rssFeedUrls.entertainment.pinkvilla]: { name: 'Pinkvilla', priority: 'high', refreshInterval: 600 },
+  [rssFeedUrls.entertainment.variety]: { name: 'Variety', priority: 'normal', refreshInterval: 1200 }, // 20 min
+  
+  // Sports feeds
+  [rssFeedUrls.sports.espnCricinfo]: { name: 'ESPNcricinfo', priority: 'critical', refreshInterval: 180 }, // 3 min
+  [rssFeedUrls.sports.cricBuzz]: { name: 'CricBuzz', priority: 'critical', refreshInterval: 180 },
+  [rssFeedUrls.sports.ndtvSports]: { name: 'NDTV Sports', priority: 'critical', refreshInterval: 300 },
+  
+  // Technology feeds
+  [rssFeedUrls.technology.techCrunch]: { name: 'TechCrunch', priority: 'high', refreshInterval: 600 },
+  [rssFeedUrls.technology.theVerge]: { name: 'The Verge', priority: 'high', refreshInterval: 600 },
+  [rssFeedUrls.technology.gadgets360]: { name: 'Gadgets 360', priority: 'high', refreshInterval: 600 },
 };
