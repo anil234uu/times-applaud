@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Menu, X, Search, Globe } from "lucide-react";
 import { navigationItems, breakingNewsItems } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import Logo from "@/components/ui/Logo";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -76,15 +77,22 @@ export default function Header() {
       {/* Breaking News Ticker - Mashvp Style */}
       <div className="fixed top-0 left-0 right-0 z-[999] bg-black text-white overflow-hidden border-b border-[#222222]">
         <div className="flex items-center">
-          <div className="breaking-indicator px-3 py-2 whitespace-nowrap z-10 font-mono text-[10px]">
-            LIVE
+          <div className="relative px-4 py-2 whitespace-nowrap z-10 flex items-center gap-2">
+            {/* Pulsing Red Dot */}
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+            </span>
+            <span className="font-mono text-[10px] font-bold tracking-wider text-red-500 uppercase">
+              Breaking
+            </span>
           </div>
           <div className="relative flex-1 overflow-hidden">
             <div className="animate-marquee flex gap-16 py-2">
               {[...breakingNewsItems, ...breakingNewsItems].map((news, index) => (
                 <span
                   key={index}
-                  className="text-nav opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  className="text-sm font-medium tracking-tight opacity-80 hover:opacity-100 transition-opacity duration-300"
                 >
                   {news}
                 </span>
@@ -105,11 +113,7 @@ export default function Header() {
         <div className="container-wide">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <Link href="/" className="group">
-              <h1 className="font-display text-xl md:text-2xl lg:text-3xl tracking-tighter text-white opacity-90 group-hover:opacity-100 transition-opacity">
-                TIMES APPLAUD
-              </h1>
-            </Link>
+            <Logo />
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
