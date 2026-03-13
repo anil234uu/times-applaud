@@ -1,88 +1,90 @@
 @import "tailwindcss";
 
-/* ========================================
-   TIMES APPLAUD DESIGN SYSTEM
-   Inspired by sanrita.ca aesthetic
-======================================== */
+/* 
+ * MASHVP.COM DESIGN SYSTEM - Times Applaud Edition
+ * Ultra-minimal black & white aesthetic with subtle category accents
+ * Based on https://mashvp.com design philosophy: "Blend Skills, Create Balance"
+ */
 
 :root {
-  /* Primary Colors */
-  --bg-primary: #0A0A0A;
-  --bg-secondary: #0D1F1C;
-  --bg-tertiary: #111111;
+  /* ===== COLOR PALETTE - Mashvp B&W Philosophy ===== */
+  --color-primary-bg: #000000;
+  --color-surface: #0a0a0a;
+  --color-surface-2: #111111;
+  --color-surface-3: #1a1a1a;
+  --color-border: #222222;
+  --color-border-subtle: #1a1a1a;
   
-  /* Accent Colors */
-  --accent-gold: #C9A84C;
-  --accent-gold-light: #D4B85E;
-  --accent-gold-dark: #A88B3D;
-  --accent-terracotta: #B5654A;
-  --accent-sage: #6B8F71;
+  /* Text Colors - White on Black */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #999999;
+  --color-text-muted: #666666;
+  --color-text-disabled: #444444;
   
-  /* Text Colors */
-  --text-primary: #F5F0E8;
-  --text-secondary: #8A8A7C;
-  --text-muted: #5A5A52;
+  /* Category Accents - Used ONLY in tiny badges */
+  --color-accent-news: #ff3b30;
+  --color-accent-entertainment: #af52de;
+  --color-accent-sports: #30d158;
+  --color-accent-tech: #0a84ff;
+  --color-accent-lifestyle: #ff9f0a;
+  --color-accent-fashion: #ff2d55;
+  --color-accent-health: #64d2ff;
+  --color-accent-travel: #ffd60a;
   
-  /* UI Colors */
-  --border-subtle: #2A2A2A;
-  --border-light: #3A3A3A;
-  --topo-lines: #3D4A3A;
-  --alert-red: #D32F2F;
-  --alert-red-dark: #B71C1C;
+  /* Interactions */
+  --color-hover-glow: rgba(255, 255, 255, 0.05);
   
-  /* Gradients */
-  --gradient-dark: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-  --gradient-gold: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-terracotta) 100%);
+  /* ===== TYPOGRAPHY - Mashvp System ===== */
+  --font-display: 'PP Neue Montreal', 'Satoshi', 'Syne', system-ui, sans-serif;
+  --font-body: 'Inter', 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Space Mono', monospace;
+  --font-serif: 'Playfair Display', 'Cormorant', Georgia, serif;
   
-  /* Spacing */
-  --section-padding: clamp(4rem, 8vw, 8rem);
-  --container-max: 1440px;
-  --container-padding: clamp(1rem, 4vw, 2rem);
+  /* ===== LAYOUT - Mashvp Grid System ===== */
+  --layout-max-width: 1440px;
+  --layout-side-padding: 80px;
+  --section-spacing: 160px;
+  --card-gap: 24px;
   
-  /* Typography Scale */
-  --font-display: clamp(3rem, 8vw, 7.5rem);
-  --font-hero: clamp(2.5rem, 6vw, 6rem);
-  --font-section: clamp(2rem, 4vw, 3rem);
-  --font-heading: clamp(1.5rem, 3vw, 2rem);
-  --font-subheading: clamp(1.125rem, 2vw, 1.5rem);
-  --font-body: clamp(1rem, 1.5vw, 1.125rem);
-  --font-small: clamp(0.75rem, 1vw, 0.875rem);
-  --font-meta: clamp(0.6875rem, 0.9vw, 0.8125rem);
+  /* ===== ANIMATION - Mashvp Signature Easing ===== */
+  --ease-expo: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-sine: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-quad: cubic-bezier(0.45, 0, 0.55, 1);
   
-  /* Animation Timings */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
-  --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  
-  /* Transitions */
-  --transition-fast: 0.15s var(--ease-out-expo);
-  --transition-base: 0.3s var(--ease-out-expo);
-  --transition-slow: 0.6s var(--ease-out-expo);
-  --transition-slower: 0.8s var(--ease-out-expo);
+  /* Animation Durations */
+  --duration-fast: 0.4s;
+  --duration-normal: 0.7s;
+  --duration-slow: 1.0s;
 }
 
 /* Tailwind Theme Extension */
 @theme inline {
-  --color-background: var(--bg-primary);
-  --color-foreground: var(--text-primary);
-  --color-primary: var(--accent-gold);
-  --color-secondary: var(--bg-secondary);
-  --color-muted: var(--text-secondary);
-  --color-accent: var(--accent-terracotta);
-  --color-border: var(--border-subtle);
+  --color-background: var(--color-primary-bg);
+  --color-foreground: var(--color-text-primary);
+  --color-surface: var(--color-surface);
+  --color-border: var(--color-border);
+  --color-muted: var(--color-text-muted);
   
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains);
-  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
 }
 
-/* Base Styles */
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html {
+  background: var(--color-primary-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -108,261 +110,376 @@ html.lenis body {
 }
 
 body {
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
-  font-size: var(--font-body);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  background: var(--color-primary-bg);
+  color: var(--color-text-primary);
+  min-height: 100vh;
 }
 
-/* Selection */
+/* ===== TYPOGRAPHY SCALE - Mashvp Style ===== */
+
+h1, .text-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(48px, 8vw, 120px);
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+h2, .text-section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 64px);
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  text-transform: uppercase;
+}
+
+h3, .text-article-large {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(24px, 3vw, 42px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+h4, .text-article-medium {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(20px, 2vw, 28px);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+h5, .text-article-small {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(16px, 1.5vw, 20px);
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+
+p, .text-body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.text-meta, .text-timestamp, .text-category-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.text-nav {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.text-button {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ===== LINKS - Mashvp Opacity-Based Hover ===== */
+
+a {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity var(--duration-fast) ease;
+}
+
+a:hover {
+  opacity: 1.0;
+}
+
+/* ===== BUTTONS - Sharp, Minimal, Uppercase ===== */
+
+button, .btn {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--color-text-primary);
+  color: var(--color-primary-bg);
+  border: none;
+  border-radius: 0;
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover, .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+}
+
+button:active, .btn:active {
+  transform: translateY(0);
+}
+
+/* ===== CARDS - Zero Border Radius, Minimal Borders ===== */
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  overflow: hidden;
+  transition: all var(--duration-fast) ease;
+}
+
+.card:hover {
+  border-color: var(--color-text-disabled);
+  transform: translateY(-4px);
+}
+
+/* ===== IMAGES - Mashvp Reveal Animation Ready ===== */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.image-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.image-container img {
+  transition: transform var(--duration-slow) var(--ease-expo);
+}
+
+.image-container:hover img {
+  transform: scale(1.05);
+}
+
+/* ===== SCROLL REVEAL ANIMATIONS ===== */
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity var(--duration-normal) var(--ease-sine),
+              transform var(--duration-normal) var(--ease-sine);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== TEXT REVEAL ANIMATION (Clip-Path Method) ===== */
+
+.text-reveal {
+  clip-path: inset(0 100% 0 0);
+  animation: textReveal var(--duration-slow) var(--ease-expo) forwards;
+}
+
+@keyframes textReveal {
+  to {
+    clip-path: inset(0 0% 0 0);
+  }
+}
+
+/* ===== MARQUEE / INFINITE SCROLL ===== */
+
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 50s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+/* ===== CATEGORY BADGES - Tiny Accent Colors ===== */
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 0;
+  display: inline-block;
+}
+
+.badge-news { background: var(--color-accent-news); color: #fff; }
+.badge-entertainment { background: var(--color-accent-entertainment); color: #fff; }
+.badge-sports { background: var(--color-accent-sports); color: #fff; }
+.badge-tech { background: var(--color-accent-tech); color: #fff; }
+.badge-lifestyle { background: var(--color-accent-lifestyle); color: #fff; }
+.badge-fashion { background: var(--color-accent-fashion); color: #fff; }
+.badge-health { background: var(--color-accent-health); color: #fff; }
+.badge-travel { background: var(--color-accent-travel); color: #000; }
+
+/* ===== BREAKING NEWS INDICATOR ===== */
+
+.breaking-indicator {
+  background: var(--color-accent-news);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ===== CUSTOM CURSOR - Mashvp Style ===== */
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor-circle {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, background-color 0.3s;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
+}
+
+/* ===== SMOOTH SCROLL CONTAINER (Lenis) ===== */
+
+.lenis {
+  height: auto;
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+.container {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: 0 var(--layout-side-padding);
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --layout-side-padding: 40px;
+    --section-spacing: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --layout-side-padding: 20px;
+    --section-spacing: 80px;
+    --card-gap: 16px;
+  }
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--card-gap);
+}
+
+.section-spacer {
+  padding: var(--section-spacing) 0;
+}
+
+/* ===== SELECTION COLOR ===== */
+
 ::selection {
-  background: var(--accent-gold);
-  color: var(--bg-primary);
+  background: var(--color-text-primary);
+  color: var(--color-primary-bg);
 }
 
-/* Scrollbar */
+/* ===== SCROLLBAR - Minimal Dark ===== */
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: var(--color-primary-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-light);
-  border-radius: 4px;
+  background: var(--color-border);
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-gold);
-}
-
-/* Typography Utilities */
-.font-display {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.font-heading {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-}
-
-.font-mono-caps {
-  font-family: var(--font-jetbrains), monospace;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: var(--font-meta);
-}
-
-.font-editorial {
-  font-family: var(--font-playfair), Georgia, serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-/* Container */
-.container-wide {
-  width: 100%;
-  max-width: var(--container-max);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--container-padding);
-  padding-right: var(--container-padding);
-}
-
-/* Section Padding */
-.section-padding {
-  padding-top: var(--section-padding);
-  padding-bottom: var(--section-padding);
-}
-
-/* Grain Overlay */
-.grain-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* Gold Accent Line */
-.gold-line {
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--accent-gold) 50%, transparent 100%);
-}
-
-/* Animated Underline */
-.animated-underline {
-  position: relative;
-}
-
-.animated-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--accent-gold);
-  transition: width var(--transition-base);
-}
-
-.animated-underline:hover::after {
-  width: 100%;
-}
-
-/* Card Hover Effect */
-.card-hover {
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-
-.card-hover:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* Image Zoom Container */
-.image-zoom-container {
-  overflow: hidden;
-}
-
-.image-zoom-container img {
-  transition: transform var(--transition-slow);
-}
-
-.image-zoom-container:hover img {
-  transform: scale(1.05);
-}
-
-/* Glow Effect */
-.glow-gold {
-  box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
-}
-
-.glow-gold:hover {
-  box-shadow: 0 0 40px rgba(201, 168, 76, 0.5);
-}
-
-/* Category Badge Colors */
-.badge-news { background: var(--accent-gold); color: var(--bg-primary); }
-.badge-entertainment { background: #9B59B6; color: white; }
-.badge-sports { background: #27AE60; color: white; }
-.badge-technology { background: #3498DB; color: white; }
-.badge-travel { background: #1ABC9C; color: white; }
-.badge-lifestyle { background: #E91E63; color: white; }
-.badge-health { background: #00BCD4; color: white; }
-.badge-fashion { background: #FF5722; color: white; }
-.badge-breaking { background: var(--alert-red); color: white; }
-
-/* Horizontal Scroll Container */
-.horizontal-scroll {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-gold) var(--bg-secondary);
-  gap: 1.5rem;
-  padding-bottom: 1rem;
-}
-
-.horizontal-scroll::-webkit-scrollbar {
-  height: 4px;
-}
-
-.horizontal-scroll > * {
-  scroll-snap-align: start;
-  flex-shrink: 0;
-}
-
-/* Marquee Animation */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-/* Pulse Animation for Topo Lines */
-@keyframes topo-pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.5; }
-}
-
-.animate-topo-pulse {
-  animation: topo-pulse 8s ease-in-out infinite;
-}
-
-/* Text Reveal Animation */
-@keyframes reveal-up {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.reveal-up {
-  animation: reveal-up 0.8s var(--ease-out-expo) forwards;
-}
-
-/* Fade In Animation */
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.6s var(--ease-out-expo) forwards;
-}
-
-/* Stagger Delays */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
-  html {
-    scroll-behavior: auto;
-  }
-}
-
-/* Hide cursor on touch devices */
-@media (pointer: coarse) {
-  .custom-cursor {
-    display: none !important;
-  }
+  background: var(--color-text-disabled);
 }

@@ -31,9 +31,9 @@ export default function Header() {
 
     const ctx = gsap.context(() => {
       gsap.to(headerRef.current, {
-        backgroundColor: isScrolled ? "rgba(10, 10, 10, 0.98)" : "rgba(10, 10, 10, 0.95)",
+        backgroundColor: isScrolled ? "rgba(0, 0, 0, 0.98)" : "rgba(0, 0, 0, 0.95)",
         backdropFilter: isScrolled ? "blur(12px)" : "blur(8px)",
-        borderBottomColor: isScrolled ? "#2A2A2A" : "#2A2A2A",
+        borderBottomColor: "#222222",
         duration: 0.3,
         ease: "power2.out",
       });
@@ -73,18 +73,18 @@ export default function Header() {
 
   return (
     <>
-      {/* Breaking News Ticker */}
-      <div className="fixed top-0 left-0 right-0 z-[999] bg-[#D32F2F] text-white overflow-hidden">
+      {/* Breaking News Ticker - Mashvp Style */}
+      <div className="fixed top-0 left-0 right-0 z-[999] bg-black text-white overflow-hidden border-b border-[#222222]">
         <div className="flex items-center">
-          <div className="bg-[#B71C1C] px-4 py-2 font-mono-caps text-xs whitespace-nowrap z-10">
-            BREAKING
+          <div className="breaking-indicator px-3 py-2 whitespace-nowrap z-10 font-mono text-[10px]">
+            LIVE
           </div>
           <div className="relative flex-1 overflow-hidden">
             <div className="animate-marquee flex gap-16 py-2">
               {[...breakingNewsItems, ...breakingNewsItems].map((news, index) => (
                 <span
                   key={index}
-                  className="font-inter text-sm md:text-base whitespace-nowrap"
+                  className="text-nav opacity-70 hover:opacity-100 transition-opacity duration-300"
                 >
                   {news}
                 </span>
@@ -99,14 +99,14 @@ export default function Header() {
         ref={headerRef}
         className={cn(
           "fixed top-10 left-0 right-0 z-[998] transition-all duration-300 border-b",
-          isScrolled ? "border-[#2A2A2A]" : "border-transparent"
+          isScrolled ? "border-[#222222]" : "border-[#222222]"
         )}
       >
         <div className="container-wide">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link href="/" className="group">
-              <h1 className="font-display text-xl md:text-2xl lg:text-3xl tracking-tighter text-[#F5F0E8] group-hover:text-[#C9A84C] transition-colors">
+              <h1 className="font-display text-xl md:text-2xl lg:text-3xl tracking-tighter text-white opacity-90 group-hover:opacity-100 transition-opacity">
                 TIMES APPLAUD
               </h1>
             </Link>
@@ -117,10 +117,10 @@ export default function Header() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="font-mono-caps text-xs text-[#F5F0E8] hover:text-[#C9A84C] transition-colors relative group"
+                  className="text-nav text-white opacity-70 hover:opacity-100 transition-opacity relative group"
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#C9A84C] group-hover:w-full transition-all duration-300" />
+                  <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-300" />
                 </Link>
               ))}
             </nav>
@@ -130,7 +130,7 @@ export default function Header() {
               {/* Search */}
               <button
                 onClick={() => setSearchExpanded(!searchExpanded)}
-                className="p-2 text-[#F5F0E8] hover:text-[#C9A84C] transition-colors"
+                className="p-2 text-white opacity-70 hover:opacity-100 transition-colors"
                 aria-label="Search"
               >
                 <Search className="w-5 h-5" />
@@ -138,7 +138,7 @@ export default function Header() {
 
               {/* Language Selector */}
               <button
-                className="hidden md:flex p-2 text-[#F5F0E8] hover:text-[#C9A84C] transition-colors"
+                className="hidden md:flex p-2 text-white opacity-70 hover:opacity-100 transition-colors"
                 aria-label="Language"
               >
                 <Globe className="w-5 h-5" />
@@ -147,7 +147,7 @@ export default function Header() {
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 text-[#F5F0E8] hover:text-[#C9A84C] transition-colors"
+                className="lg:hidden p-2 text-white opacity-70 hover:opacity-100 transition-colors"
                 aria-label="Menu"
               >
                 {isMobileMenuOpen ? (
@@ -165,7 +165,7 @@ export default function Header() {
               ref={searchInputRef}
               type="text"
               placeholder="Search articles, topics..."
-              className="w-0 h-10 bg-transparent border-b border-[#C9A84C] text-[#F5F0E8] placeholder:text-[#8A8A7C] focus:outline-none font-jetbrains text-sm"
+              className="w-0 h-10 bg-transparent border-b border-white text-white placeholder:text-[#666666] focus:outline-none font-mono text-sm"
               style={{ opacity: 0 }}
             />
           </div>
@@ -181,19 +181,19 @@ export default function Header() {
       >
         {/* Backdrop */}
         <div
-          className="absolute inset-0 bg-[#0A0A0A]/95 backdrop-blur-md"
+          className="absolute inset-0 bg-black/95 backdrop-blur-md"
           onClick={() => setIsMobileMenuOpen(false)}
         />
 
         {/* Menu Content */}
-        <div className="absolute right-0 top-0 bottom-0 w-full max-w-md bg-[#0A0A0A] border-l border-[#2A2A2A] p-8 pt-24">
+        <div className="absolute right-0 top-0 bottom-0 w-full max-w-md bg-black border-l border-[#222222] p-8 pt-24">
           <nav className="flex flex-col gap-6">
             {navigationItems.map((item, index) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="font-display text-2xl text-[#F5F0E8] hover:text-[#C9A84C] transition-colors"
+                className="font-display text-2xl text-white opacity-70 hover:opacity-100 transition-opacity"
                 style={{
                   opacity: isMobileMenuOpen ? 0 : 0,
                   transform: isMobileMenuOpen ? "translateX(20px)" : "translateX(0)",
@@ -205,23 +205,23 @@ export default function Header() {
           </nav>
 
           {/* Additional Links */}
-          <div className="mt-12 pt-8 border-t border-[#2A2A2A]">
+          <div className="mt-12 pt-8 border-t border-[#222222]">
             <nav className="flex flex-col gap-4">
               <Link
                 href="/about"
-                className="font-mono-caps text-sm text-[#8A8A7C] hover:text-[#C9A84C] transition-colors"
+                className="text-nav text-[#999999] opacity-70 hover:opacity-100 transition-opacity"
               >
                 About Us
               </Link>
               <Link
                 href="/contact"
-                className="font-mono-caps text-sm text-[#8A8A7C] hover:text-[#C9A84C] transition-colors"
+                className="text-nav text-[#999999] opacity-70 hover:opacity-100 transition-opacity"
               >
                 Contact
               </Link>
               <Link
                 href="/subscribe"
-                className="font-mono-caps text-sm text-[#8A8A7C] hover:text-[#C9A84C] transition-colors"
+                className="text-nav text-[#999999] opacity-70 hover:opacity-100 transition-opacity"
               >
                 Subscribe
               </Link>
@@ -230,13 +230,13 @@ export default function Header() {
 
           {/* Social Links */}
           <div className="mt-auto pt-8">
-            <p className="font-mono-caps text-xs text-[#8A8A7C] mb-4">FOLLOW US</p>
+            <p className="text-nav text-xs text-[#666666] mb-4">FOLLOW US</p>
             <div className="flex gap-4">
               <a
                 href="https://facebook.com/timesapplaud"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-[#2A2A2A] flex items-center justify-center text-[#F5F0E8] hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+                className="w-10 h-10 border border-[#222222] flex items-center justify-center text-white opacity-70 hover:opacity-100 transition-opacity"
               >
                 FB
               </a>
@@ -244,7 +244,7 @@ export default function Header() {
                 href="https://youtube.com/@TimesApplaud"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-[#2A2A2A] flex items-center justify-center text-[#F5F0E8] hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+                className="w-10 h-10 border border-[#222222] flex items-center justify-center text-white opacity-70 hover:opacity-100 transition-opacity"
               >
                 YT
               </a>
@@ -252,7 +252,7 @@ export default function Header() {
                 href="https://instagram.com/timesapplaud"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-[#2A2A2A] flex items-center justify-center text-[#F5F0E8] hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+                className="w-10 h-10 border border-[#222222] flex items-center justify-center text-white opacity-70 hover:opacity-100 transition-opacity"
               >
                 IG
               </a>
